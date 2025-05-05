@@ -1,9 +1,23 @@
+<html>
+    <head>
+    @vite(['resources/index.blade.css', 'resources/css/index.blade.css'])  
+    @vite(['resources/index.blade.js', 'resources/js/index.blade.js'])
+    </head>
+    <body>
+        
+   
 <h1>MOSTRAR LA LISTA DE EMPLEADOS</h1>
+
 
 @if(Session::has('mensaje'))
 {{Session::get('mensaje')}}
 @endif
-<a href="{{ route('empleado.create') }}">Registrar nuevo</a>
+<button type="button" id="registrarNuevoBtn" class="btn btn-primary" data-url="{{ route('empleado.create') }}">Registrar nuevo</button>
+<button type="button" id="regresarMenuBtn" class="btn btn-primary" data-url="{{ url('/') }}">regresar al menu</button>
+
+
+
+
 
 <table class="table table-light">
     <thead class="thead-light">
@@ -42,3 +56,5 @@
 
     </tbody>
 </table>
+</body>
+</html>

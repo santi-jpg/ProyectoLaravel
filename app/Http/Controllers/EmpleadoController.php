@@ -42,7 +42,7 @@ class EmpleadoController extends Controller
         }
 
         Empleado::insert($datosEmpleado);
-        return redirect('empleado')->width('mensaje','empleado agregado correctamente');
+        return redirect('empleado')->with('mensaje','empleado agregado correctamente');
     }
 
     /**
@@ -74,12 +74,14 @@ class EmpleadoController extends Controller
                 Storage::delete('public/'.$empleado->Foto);
             }
             $datosEmpleado['Foto']=$request->file('Foto')->store('uploads', 'public');
+        } else {
+            unset($datosEmpleado['Foto']);
         }
     
         $empleado->update($datosEmpleado);
 
         
-        return view('empleados.edit', compact('empleado'));
+        return redirect('empleado')->with('mensaje', 'Datos editados correctamente');
     }
 
     /**
